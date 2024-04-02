@@ -1,23 +1,39 @@
-import './Item.css'
-
+import { useContext, useState } from 'react';
+import EditItem from './EditItem'
+import ItemContext from '../context/itemContext';
 const deleteIcon = require('../assets/delete.png');
 const editIcon = require('../assets/edit.png');
 
 
-function Item({ name, onDelete }) {
+function Item({ item }) {
+    const [edit, setEdit] = useState(false)
+    const { deleteItemById } = useContext(ItemContext)
 
-    const handleDeleteClick = (e) => {
-        e.preventDefault();
-        onDelete()
+    const handleDeleteClick = () => {
+        deleteItemById(item._id)
+    }
+
+    const handleEditClick = () => {
+        setEdit(!edit)
+    }
+
+    const handleSubmit = () => {
+        setEdit(false)
+    }
+
+    let editContent = <p>{item.name}</p>
+
+    if(edit) {
+        editContent = <EditItem onSubmit={handleSubmit} item={item}/>
     }
 
     return <div className="item">
             <div className='title'>
-                <p>{name}</p>
+                {editContent}
             </div>
             <div className='img'>
-                <img src={editIcon} />
-                <img src={deleteIcon} onClick={handleDeleteClick}/>
+                <img src={editIcon} onClick={handleEditClick} alt="Edit icon"/>
+                <img src={deleteIcon} onClick={handleDeleteClick} alt="Delete icon"/>
             </div>
         </div>
 }

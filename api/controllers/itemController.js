@@ -6,8 +6,6 @@ const getAllItems = async (req, res) => {
         res.status(200).json(items);
     } catch (err) {
         res.status(400).send(err.message);
-    } finally {
-        console.log("get all items");
     }
 };
 
@@ -29,7 +27,7 @@ const createItem = async (req, res) => {
     }
 };
 
-const updateItem = async (req, res) => {
+const updateItemById = async (req, res) => {
     const itemId = req.params.id
     try{
         const itemUpdated = await Item.findByIdAndUpdate(itemId, req.body, { new: true });
@@ -42,4 +40,17 @@ const updateItem = async (req, res) => {
     }
 }
 
-module.exports = { getAllItems, createItem, updateItem }
+const deleteItemById = async (req, res) => {
+    const itemId = req.params.id
+    try{
+        const itemDeleted = await Item.findByIdAndDelete(itemId);
+        if(!itemDeleted) {
+            res.status(404).send("Item not found")
+        }
+        res.status(200).send("Item deleted!")
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
+}
+
+module.exports = { getAllItems, createItem, updateItemById, deleteItemById }

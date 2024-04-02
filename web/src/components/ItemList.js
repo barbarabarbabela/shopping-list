@@ -1,12 +1,15 @@
+import { useContext } from "react";
 import Item from "./Item";
-import './ItemList.css'
+import ItemContext from "../context/itemContext";
 
-function ItemList({ onRender, onDelete }) {
+function ItemList() {
+
+    const { items } = useContext(ItemContext);
     
     return <div className="itemList">
         <h2>Itens: </h2>
         <div className="renderList">
-            {onRender.map((item) => <Item onDelete={onDelete} name={item.name} key={item._id}/>)}
+            {items.map((item) => <Item item={item} key={item._id}/>)}
         </div>
     </div>
 }

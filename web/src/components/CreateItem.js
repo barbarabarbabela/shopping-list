@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import ItemContext from "../context/itemContext";
 
-function CreateItem({ onCreate }) {
+function CreateItem() {
     const [input, setInput] = useState("")
+
+    const { createItem } = useContext(ItemContext)
 
     const handleChange = (e) => {
         setInput(e.target.value)  
@@ -9,7 +12,7 @@ function CreateItem({ onCreate }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onCreate(input)
+        createItem(input)
         setInput("")  
     }
 
