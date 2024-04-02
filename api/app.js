@@ -21,7 +21,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
-    console.log(`Recebida uma requisição para: ${req.url}`);
     next();
   });
 

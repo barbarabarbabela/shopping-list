@@ -3,7 +3,6 @@ import ItemContext from "../context/itemContext";
 
 function CreateItem() {
     const [input, setInput] = useState("")
-
     const { createItem } = useContext(ItemContext)
 
     const handleChange = (e) => {
