@@ -11,8 +11,8 @@ function App() {
     }, []);
     
     return (
-        <div className="app">
-            <h2>Shopping List</h2>
+        <div className="fixed w-full h-full bg-gray-100 ">
+            <h2 className="text-3xl text-center font-medium text-black">Shopping List</h2>
             <CreateItem/>
             <ItemList/>
         </div>

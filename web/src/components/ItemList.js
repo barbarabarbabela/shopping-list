@@ -6,9 +6,9 @@ function ItemList() {
 
     const { items } = useContext(ItemContext);
     
-    return <div className="itemList">
-        <h2>Itens: </h2>
-        <div className="renderList">
+    return <div className="itemList mt-50 p-3 m-5">
+        <h2>Items: </h2>
+        <div className="flex flex-wrap">
             {items.map((item) => <Item item={item} key={item._id}/>)}
         </div>
     </div>

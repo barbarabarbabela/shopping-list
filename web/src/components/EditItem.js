@@ -15,10 +15,9 @@ function EditItem({ onSubmit, item}) {
     }
 
     return     (    
-    <form className="edit" onSubmit={handleSubmit}>
-        <label>Item: </label>
-        <input  onChange={handleChange} value={name} />
-        <button>Save</button>
+    <form onSubmit={handleSubmit}>
+        <input  onChange={handleChange} value={name} className="border border-gray-300 rounded px-2 py-1"/>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-1 rounded">Save</button>
     </form>
   )
 }

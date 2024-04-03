@@ -27,11 +27,11 @@ function Item({ item }) {
         editContent = <EditItem onSubmit={handleSubmit} item={item}/>
     }
 
-    return <div className="item">
-            <div className='title'>
+    return <div className="flex justify-between w-1/5 bg-white h-auto p-5 m-10 rounded-lg shadow-md">
+            <div className='title ml-5'>
                 {editContent}
             </div>
-            <div className='img'>
+            <div className='h-8 flex' >
                 <img src={editIcon} onClick={handleEditClick} alt="Edit icon"/>
                 <img src={deleteIcon} onClick={handleDeleteClick} alt="Delete icon"/>
             </div>
